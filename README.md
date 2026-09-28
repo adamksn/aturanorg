@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://aturan.org">
-    <img src="logo/logo.png" alt="Aturan.org" height="80" />
+    <img src="logo/logo-aturanorg.png" alt="Aturan.org" height="80" />
   </a>
 </p>
 
