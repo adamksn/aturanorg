@@ -265,13 +265,13 @@ Before drawing a legal conclusion, evaluate the complete text and context of the
 The diagram below describes the public Aturan.org retrieval architecture. It intentionally focuses on the product interfaces and retrieval flow—not private infrastructure or implementation details.
 
 ```text
-                               ┌───────────────────────────────────┐
-                               │  Indonesian regulation corpus     │
-                               │  288,826 regulations              │
-                               │  5,339,903 structured Pasal       │
-                               └───────────────┬───────────────────┘
-                                               │
-                                               ▼
+                         ┌───────────────────────────────────┐
+                         │  Indonesian regulation corpus     │
+                         │  288,826 regulations              │
+                         │  5,339,903 structured Pasal       │
+                         └─────────────────┬─────────────────┘
+                                           │
+                                           ▼
                     ┌──────────────────────────────────────────────┐
                     │            Aturan.org Retrieval Core         │
                     │                                              │
@@ -279,26 +279,26 @@ The diagram below describes the public Aturan.org retrieval architecture. It int
                     │  · Exact Nearest Neighbor semantic search    │
                     │  · Pasal-level candidate retrieval           │
                     │  · regulation grouping and full Pasal read   │
-                    └───────────────┬───────────────────┬──────────┘
-                                    │                   │
-                ┌───────────────────┘                   └─────────────────────┐
-                ▼                                                             ▼
-┌───────────────────────────────────┐                         ┌───────────────────────────────────┐
-│  MCP Server · Streamable HTTP     │                         │  Aturan.org web app and REST API  │
-│                                   │                         │                                   │
-│  · cari_judul_peraturan           │                         │  · issue and regulation discovery │
-│  · cari_pasal_terkait             │                         │  · legal research workflows       │
-│  · cari_peraturan_terkait         │                         │  · application integration        │
-│  · baca_isi_pasal                 │                         │                                   │
-└───────────────┬───────────────────┘                         └───────────────┬───────────────────┘
-                │                                                             │
-                ▼                                                             ▼
-┌───────────────────────────────────┐                         ┌───────────────────────────────────┐
-│  AI clients and agentic LLMs      │                         │  Researchers and applications     │
-│                                   │                         │                                   │
-│  retrieve → read → analyse        │                         │  search · inspect · integrate     │
-│  with grounded source material    │                         │                                   │
-└───────────────────────────────────┘                         └───────────────────────────────────┘
+                    └───────────────┬─────────────┬────────────────┘
+                                    │             │
+                ┌───────────────────┘             └──────────────────┐
+                ▼                                                    ▼
+┌─────────────────────────────────┐                 ┌────────────────────────────────────┐
+│  MCP Server · Streamable HTTP   │                 │  Aturan.org web app and REST API   │
+│                                 │                 │                                    │
+│  · cari_judul_peraturan         │                 │  · issue and regulation discovery  │
+│  · cari_pasal_terkait           │                 │  · legal research workflows        │
+│  · cari_peraturan_terkait       │                 │  · application integration         │
+│  · baca_isi_pasal               │                 │                                    │
+└───────────────┬─────────────────┘                 └────────────────┬───────────────────┘
+                │                                                    │
+                ▼                                                    ▼
+┌─────────────────────────────────┐                 ┌────────────────────────────────────┐
+│  AI clients and agentic LLMs    │                 │  Researchers and applications      │
+│                                 │                 │                                    │
+│  retrieve → read → analyse      │                 │  search · inspect · integrate      │
+│  with grounded source material  │                 │                                    │
+└─────────────────────────────────┘                 └────────────────────────────────────┘
 ```
 
 ## Retrieval design
