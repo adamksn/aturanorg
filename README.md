@@ -6,7 +6,12 @@
 
 <h1 align="center">Aturan.org</h1>
 
-<h3 align="center">Indonesia’s First Public Semantic Search for Laws and Regulations</h3>
+<h3 align="center">Semantic Legal Retrieval for Indonesian Regulations</h3>
+
+<p align="center">
+  Find legal norms by meaning. Verify the source.<br />
+  Grounded regulatory data for people, applications, and AI agents.
+</p>
 
 <p align="center">
   <a href="https://aturan.org">Website</a> ·
@@ -17,328 +22,816 @@
 
 <p align="center">
   <a href="https://aturan.org"><img src="https://img.shields.io/badge/Legal_Knowledge-Aturan.org-184B3B?style=flat" alt="Legal Knowledge by Aturan.org" /></a>
-  <a href="https://aturan.org/mcp"><img src="https://img.shields.io/badge/MCP-Server-2463EB?style=flat" alt="MCP Server" /></a>
-  <img src="https://img.shields.io/badge/Search-Exact_Nearest_Neighbor-184B3B?style=flat" alt="Search using Exact Nearest Neighbor" />
+  <a href="https://aturan.org/mcp"><img src="https://img.shields.io/badge/MCP-Streamable_HTTP-2463EB?style=flat" alt="MCP Streamable HTTP" /></a>
+  <img src="https://img.shields.io/badge/Retrieval-Pasal_Level-184B3B?style=flat" alt="Pasal-level retrieval" />
+  <img src="https://img.shields.io/badge/Search-Exact_Nearest_Neighbor-184B3B?style=flat" alt="Exact Nearest Neighbor" />
 </p>
 
 ---
 
-Aturan.org helps people and AI systems retrieve Indonesian regulations and the provisions within them. It is AI-ready through a remote **Model Context Protocol (MCP)** server, and is available through a REST API and web app for legal research.
+## What is Aturan.org?
 
-> Aturan.org is a retrieval system, not an automated legal-opinion service. Always read the full text and context of a provision before relying on it.
+**Aturan.org** is a semantic legal retrieval system for Indonesian regulations.
 
-## Why Aturan.org
+It helps people, applications, and AI agents discover regulations and legal provisions based on **meaning and legal context**, rather than relying only on exact keywords or already knowing the title of a regulation.
 
-Legal research often begins with a document name, but legal questions usually begin with an issue: a right, obligation, prohibition, procedure, sanction, authority, or condition. Keyword search alone can make it difficult to find the relevant provision when the regulation is not yet known.
+Aturan.org performs semantic retrieval at the **Pasal level**. A legal issue can therefore be matched directly against candidate provisions, which can then be traced back to the regulations that contain them and read in full before being used in legal analysis.
 
-Aturan.org enables semantic retrieval at the **Pasal** level, so a legal question can be used to discover relevant provisions and the regulations that contain them. An AI agent can then read the complete text of selected provisions before producing analysis with grounded references.
+The platform is available through:
+
+- a public **web application** for legal research;
+- a **REST API** for application and system integration; and
+- a remote **Model Context Protocol (MCP) server** for AI clients and agentic workflows.
+
+> **Aturan.org is a retrieval system, not an automated legal-opinion service.**
+>
+> Semantic retrieval identifies relevant legal material. Legal applicability and interpretation still require evaluation of the complete provision, regulatory context, amendments, hierarchy, and the facts being analysed.
+
+---
+
+## Why semantic legal retrieval?
+
+Legal research does not always begin with the name of a regulation.
+
+It often begins with an issue:
+
+- What obligations apply?
+- What activity is prohibited?
+- What authority does an institution have?
+- What procedure must be followed?
+- What sanctions may apply?
+- What regulations govern a particular activity?
+
+Traditional title or keyword search works well when the researcher already knows what document or wording to search for.
+
+But legal questions are often expressed differently from the language used by legislation.
+
+Aturan.org addresses this by matching the **meaning of a query** against structured legal provisions.
+
+```text
+Legal question or concept
+          │
+          ▼
+   Semantic retrieval
+          │
+          ▼
+ Candidate Pasal
+          │
+          ▼
+ Relevant regulations
+          │
+          ▼
+ Read full provisions
+          │
+          ▼
+       Analyze
+```
+
+This makes it possible to begin legal research from the **substance of the issue**, rather than from an assumed document.
+
+---
 
 ## What you can do
 
-| Capability | What it does |
+| Capability | Purpose |
 | --- | --- |
-| Semantic Pasal search | Finds provisions relevant to a legal concept, right, obligation, procedure, or sanction. |
-| Regulation discovery | Maps regulations related to an issue, across regulation types and hierarchies. |
-| Title and identity search | Finds a regulation when its title, type, number, or year is known. |
-| Full provision reading | Retrieves the complete text of a selected Pasal before it is cited or analysed. |
-| AI integration | Connects compatible AI clients and agents through remote MCP over Streamable HTTP. |
-| REST API and web app | Makes the same legal-research workflow usable for applications and people. |
-| Research exports | Exports search results to DOCX for sharing and further work. |
-| Saved collections | Lets users bookmark relevant Pasal into personal collections. |
+| **Regulation discovery** | Discover regulations connected to a legal issue across regulation types and hierarchies. |
+| **Pasal-level semantic search** | Find candidate provisions related to a right, obligation, prohibition, authority, procedure, sanction, condition, or other legal concept. |
+| **Regulation identity search** | Locate a regulation when its type, number, year, title, or title fragment is already known. |
+| **Full-Pasal retrieval** | Read the complete wording of a selected provision before quoting or analysing it. |
+| **Legal landscape research** | Explore an issue across multiple regulations and normative dimensions. |
+| **AI grounding** | Give AI agents structured access to retrieved Indonesian legal material before reasoning. |
+| **Application integration** | Integrate Indonesian regulatory retrieval into LegalTech, RegTech, RAG, research, and other applications. |
+| **Research workflow** | Search, inspect, save, export, and continue working with retrieved legal material. |
 
-## Search from the landing page
+---
 
-The Aturan.org landing page is always ready for legal research. Users can start a search immediately in one of two modes:
+## Built for people, applications, and AI
 
-| Mode | Best for | What it finds |
-| --- | --- | --- |
-| **Cari Peraturan Terkait** | Broad issues, policy research, and early-stage legal mapping. | Regulations related to an issue, with semantic Pasal hits to inspect next. |
-| **Cari Pasal Terkait** | A specific right, obligation, prohibition, procedure, sanction, or legal concept. | Candidate Pasal that are semantically relevant to the query. |
+Aturan.org exposes the same legal-retrieval foundation through three different interfaces.
 
-Search results can be exported as a **DOCX** document and important provisions can be bookmarked into a **Pasal collection**, so research can continue beyond a single search session.
+### Web
 
-## Connect an AI client
+The web application is designed for people conducting legal and regulatory research.
 
-Aturan.org provides a remote MCP server via **Streamable HTTP**. It can be used with MCP-capable clients such as [Cherry Studio](https://cherryai.com/), [Agora](https://play.google.com/store/apps/details?id=com.newoether.agora), and other compatible agents or frameworks.
+Users can search by legal issue, inspect regulations and Pasal candidates, verify source material, save relevant provisions, and export research results.
 
-### Public test connection
+**Website:**  
+https://aturan.org
 
-MCP endpoint:
+### REST API
+
+The REST API provides programmatic access to Aturan.org retrieval services.
+
+It is intended for applications, LegalTech, RegTech, RAG pipelines, enterprise systems, and developers who need explicit control over requests and responses.
+
+**Documentation:**  
+https://aturan.org/api
+
+### MCP Server
+
+The Aturan.org MCP Server exposes legal retrieval as tools that AI models and agents can call directly.
+
+Instead of placing an entire legal corpus into a model context, an agent can retrieve only the regulatory material needed for the current question, inspect the results, read selected provisions, and continue its reasoning from grounded source material.
+
+**Documentation:**  
+https://aturan.org/mcp
+
+---
+
+## Connect your AI
+
+Aturan.org provides a remote MCP server using **Streamable HTTP**.
 
 ```text
 https://mcp.aturan.org/mcp
 ```
 
-Use this header:
+Aturan.org supports two authentication paths:
+
+```text
+                         Aturan.org Account
+                                │
+                 ┌──────────────┴──────────────┐
+                 │                             │
+              OAuth                        API Key
+                 │                             │
+        interactive access            programmatic access
+                 │                             │
+                 └──────────────┬──────────────┘
+                                │
+                                ▼
+                         Aturan.org services
+```
+
+### OAuth
+
+OAuth provides an interactive connection between a compatible client and an Aturan.org account.
+
+The client can open the Aturan.org authorization flow in a browser, where the user signs in and grants access. The client can then manage the resulting OAuth credentials according to its own implementation.
+
+OAuth is particularly convenient for AI services and MCP clients with native OAuth support.
+
+### API Key
+
+Users can create dedicated API keys directly from the **Aturan.org Dashboard**.
+
+API keys are suitable for:
+
+- MCP clients using bearer authentication;
+- REST API integration;
+- backend applications;
+- automation and agent services;
+- development environments; and
+- server-to-server workflows.
+
+Separate keys can be created for different clients or environments and revoked independently when no longer needed.
+
+API keys are transmitted using the HTTP `Authorization` header:
 
 ```http
-Authorization: Bearer aturanorg-mcp-ujicoba-1234567890abcdef
+Authorization: Bearer YOUR_API_KEY
 ```
 
-The public token is only for evaluation. It may be rotated, rate-limited, or disabled at any time. Do not use it as a production credential or embed it in a public application. It is different from an Aturan.org REST API key.
+Do not embed API keys in public source code or expose them in client-side applications.
 
-### Cherry Studio configuration
+For current authentication details, supported clients, connection instructions, and configuration examples, see:
 
-Add the following server configuration, then refresh or reconnect the MCP client so it loads the available tools.
+**https://aturan.org/mcp**
 
-```json
-{
-  "mcpServers": {
-    "aturanorg": {
-      "url": "https://mcp.aturan.org/mcp",
-      "headers": {
-        "Authorization": "Bearer aturanorg-mcp-ujicoba-1234567890abcdef"
-      },
-      "disabled": false,
-      "autoApprove": []
-    }
-  }
-}
-```
+For REST API integration, see:
+
+**https://aturan.org/api**
+
+> Operational connection details may evolve independently from this repository. The MCP and REST API documentation are the source of truth for their respective interfaces.
+
+---
 
 ## MCP tools
 
-| Tool | Use it when | Returns |
-| --- | --- | --- |
-| `cari_judul_peraturan` | The regulation’s title, type, number, or year is known. | Matching regulation records and `regulation_id`. |
-| `cari_pasal_terkait` | You need a relevant norm or Pasal, but do not yet know the regulation. | Semantically relevant candidate provisions. |
-| `cari_peraturan_terkait` | You need to map regulations related to an issue. | Grouped regulations with semantic Pasal hits. |
-| `baca_isi_pasal` | A candidate provision must be read in full. | The full text of one selected Pasal. |
+The MCP server exposes complementary legal retrieval tools.
 
-## From retrieval to agentic legal research
-
-Each tool returns a different kind of evidence. Used once, a tool helps answer one retrieval need. Used together by an agentic LLM, the four tools form a research loop: the model can map an issue, find candidate norms, resolve an exact regulation, read the complete provision, and refine the next retrieval from what it learned.
-
-This makes analysis easier to ground because the agent is not forced to answer from a single search result or its internal knowledge. It can collect the relevant primary material first, then separate what the regulation says from its own interpretation.
-
-| Tool | Distinct contribution in an agentic workflow |
+| Tool | Purpose |
 | --- | --- |
-| `cari_peraturan_terkait` | The **wide-angle lens**: discovers the legal landscape and groups related regulations from semantic Pasal hits. |
-| `cari_pasal_terkait` | The **norm finder**: surfaces provisions that are semantically close to a focused legal issue. |
-| `cari_judul_peraturan` | The **identity resolver**: finds the precise regulation when its name, type, number, year, or title fragment is known. |
-| `baca_isi_pasal` | The **source check**: obtains the full text of a selected provision before it is quoted or relied on. |
+| `cari_peraturan_terkait` | Discover regulations related to a legal issue through aggregated Pasal-level semantic retrieval. |
+| `cari_pasal_terkait` | Find candidate Pasal directly by semantic similarity to a legal concept or normative issue. |
+| `cari_judul_peraturan` | Resolve a known regulation from its title, type, number, year, or title fragment. |
+| `baca_isi_pasal` | Retrieve the complete wording of a selected Pasal from a regulation already identified by Aturan.org. |
 
-An agent should use only the tools that add information. The results are complementary, not interchangeable: regulation discovery answers *which documents may matter*; Pasal search answers *which norms may matter*; title search answers *which exact document is meant*; and full-text reading answers *what the provision actually says*.
-
-### Agentic workflow
+Each tool answers a different retrieval question.
 
 ```text
-question or legal issue
-        ↓
-plan one or more focused queries
-        ↓
-cari_peraturan_terkait ──→ map candidate regulations
-        ↓                         │
-cari_pasal_terkait ──────→ find candidate norms
-        ↓                         │
-cari_judul_peraturan ────→ resolve a known document and regulation_id
-        ↓
-baca_isi_pasal ──────────→ verify full wording of selected provisions
-        ↓
-compare, refine, retrieve again if needed, then analyse
+Which regulations may matter?
+        │
+        └── cari_peraturan_terkait
+
+Which norms may matter?
+        │
+        └── cari_pasal_terkait
+
+Which exact regulation is this?
+        │
+        └── cari_judul_peraturan
+
+What does the provision actually say?
+        │
+        └── baca_isi_pasal
 ```
 
-The final analysis is still an analysis, not an automated legal conclusion. It should state the retrieved text and sources separately from any interpretation, and flag where further verification is needed.
+The tools are complementary rather than interchangeable.
 
-## Four complementary scenarios
+An agent does not need to call every tool for every question. It should select the tools that add information needed for the research task.
 
-### 1. Broad issue: build the legal landscape first
-
-**Question:** “What regulations relate to administrative sanctions in mining business activities?”
-
-1. Start with `cari_peraturan_terkait("sanksi administratif dalam kegiatan usaha pertambangan")` to discover a broad set of related regulations and their `semantic_hits`.
-2. Inspect the resulting groups: regulation type, year, status, and the candidate Pasal numbers in `semantic_hit_pasals`.
-3. Run narrower follow-up queries where necessary, for example `kewajiban pemegang izin usaha pertambangan` or `prosedur pengenaan sanksi administratif pertambangan`.
-4. Use `baca_isi_pasal` only for selected candidate provisions before describing the sanctions or procedure.
-
-**Why all results matter:** regulation discovery prevents the research from starting with a single assumed document; focused Pasal search narrows the question; full-text reading prevents a semantic preview from being mistaken for the rule itself.
-
-### 2. Specific norm: find the relevant Pasal, then widen the check
-
-**Question:** “What are the rights of an heir receiving BPJS Ketenagakerjaan death benefits?”
-
-1. Start with `cari_pasal_terkait("hak ahli waris penerima manfaat jaminan kematian BPJS Ketenagakerjaan")` to find candidate norms directly.
-2. Read the strongest candidates with `baca_isi_pasal`, using only their returned `regulation_id` and Pasal numbers.
-3. Use `cari_peraturan_terkait` with the same or a refined query to check whether the issue is also addressed in other related regulations.
-4. If the agent needs to verify a regulation mentioned in the results by its formal identity, use `cari_judul_peraturan` before reading further provisions.
-
-**Why the results differ:** Pasal search is optimized to surface a concrete norm. Regulation discovery may reveal related documents that a single norm-level search does not make obvious. The agent can use both without treating either as a conclusion.
-
-### 3. Known document: resolve the identity, then read the exact rule
-
-**Question:** “What does PP 45 Tahun 2009 say about a particular requirement?”
-
-1. Run `cari_judul_peraturan("PP 45 Tahun 2009")` to resolve the regulation and obtain its actual `regulation_id`.
-2. If a Pasal number is already known, call `baca_isi_pasal(regulation_id, pasal)` to read the full text.
-3. If the relevant Pasal number is not known, use `cari_pasal_terkait` with the substantive requirement as the query, then read the candidate Pasal returned for that regulation.
-4. When the question may have implications outside that document, use `cari_peraturan_terkait` to discover related regulations before forming an analysis.
-
-**Why the results differ:** title search establishes *which document* is being discussed; Pasal search helps find *where inside the legal material* the requirement is discussed; the reading tool verifies *the actual wording*.
-
-### 4. Complex issue: split one question into several retrieval paths
-
-**Question:** “How is PLTS atap regulated, and what are the obligations of an electricity provider?”
-
-An agent should avoid one oversized semantic query. Instead, it can work through focused paths:
-
-```text
-cari_peraturan_terkait("pengaturan PLTS atap")
-cari_pasal_terkait("perizinan PLTS atap")
-cari_pasal_terkait("kewajiban pemegang izin usaha penyediaan tenaga listrik terkait PLTS atap")
-cari_pasal_terkait("ekspor impor energi listrik PLTS atap")
-cari_pasal_terkait("kapasitas pemasangan PLTS atap")
-```
-
-The agent compares the resulting regulations and candidate provisions, uses `cari_judul_peraturan` to resolve any document it needs to identify exactly, and calls `baca_isi_pasal` for every provision that will support its explanation.
-
-**Result:** instead of one shallow answer, the agent can produce a structured research trail: the relevant regulatory landscape, each issue-specific norm, the full wording that supports each point, and a clearly marked interpretation.
-
-### Example prompts
-
-After connecting the MCP server, ask an AI client questions such as:
-
-```text
-Temukan ketentuan tentang kewajiban pemberi kerja mendaftarkan pekerja
-ke program jaminan sosial.
-```
-
-```text
-Regulasi apa saja yang berkaitan dengan sanksi administratif
-dalam kegiatan usaha pertambangan?
-```
-
-```text
-Cari PP 45 Tahun 2009, lalu bacakan Pasal yang mengatur topik terkait.
-```
+---
 
 ## Retrieval workflow
+
+A useful mental model for legal research with Aturan.org is:
 
 ```text
 DISCOVER → IDENTIFY → READ → ANALYZE
 ```
 
-1. **Discover** — use title search, Pasal search, or regulation discovery to retrieve candidates.
-2. **Identify** — evaluate the title, type, year, status, metadata, and semantic hits.
-3. **Read** — retrieve the full text of the relevant Pasal using `baca_isi_pasal`.
-4. **Analyze** — distinguish the text of the norm, relations between regulations, interpretation, and your conclusion.
+### 1. Discover
 
-Choose the tool based on what is known:
+Find candidate regulations or provisions.
+
+Depending on what is already known, this may begin with:
 
 ```text
-Known regulation identity
-cari_judul_peraturan → regulation_id → baca_isi_pasal
-
-Known legal issue or norm
-cari_pasal_terkait → evaluate candidates → baca_isi_pasal → analyze
-
-Need to map the legal landscape
-cari_peraturan_terkait → evaluate groups → semantic_hit_pasals → baca_isi_pasal → analyze
+cari_peraturan_terkait
+cari_pasal_terkait
+cari_judul_peraturan
 ```
 
-## Using semantic retrieval well
+### 2. Identify
 
-Write queries as the legal substance you need, rather than as a conversational instruction.
+Evaluate the retrieved candidates.
 
-| Prefer | Instead of |
-| --- | --- |
-| `hak ahli waris penerima manfaat program jaminan kematian BPJS Ketenagakerjaan` | `bagaimana jaminan kematian BPJS Ketenagakerjaan untuk ahli waris pekerja yang meninggal` |
-| `jenis alat bukti yang sah dalam hukum acara pidana` | `apa saja alat bukti yang sah?` |
+Relevant signals may include:
 
-For a complex issue, break it into several focused retrievals. For example, research on PLTS atap may need separate queries on licensing, an electricity provider’s obligations, electricity export and import, and installation capacity.
+- regulation title;
+- regulation type;
+- year;
+- status;
+- metadata;
+- semantic hits;
+- candidate Pasal numbers; and
+- relationships with other retrieved regulations.
+
+### 3. Read
+
+Retrieve the complete wording of provisions that will support the analysis.
+
+```text
+baca_isi_pasal
+```
+
+A semantic hit is a **candidate**, not a substitute for reading the legal provision itself.
+
+### 4. Analyze
+
+Only after retrieving the relevant material should the model or researcher build the substantive analysis.
+
+The analysis should distinguish between:
+
+```text
+retrieved legal text
+        ↓
+relationship between regulations
+        ↓
+interpretation
+        ↓
+analytical conclusion
+```
+
+---
+
+## Three retrieval paths
+
+The appropriate workflow depends on what is already known.
+
+### Known regulation
+
+If the regulation is already identified:
+
+```text
+cari_judul_peraturan
+        ↓
+   regulation_id
+        ↓
+baca_isi_pasal
+        ↓
+      analyze
+```
+
+### Known legal issue
+
+If the issue or norm is known but the regulation is not:
+
+```text
+cari_pasal_terkait
+        ↓
+evaluate candidates
+        ↓
+baca_isi_pasal
+        ↓
+      analyze
+```
+
+### Regulatory landscape
+
+If the objective is to identify the broader regulatory framework:
+
+```text
+cari_peraturan_terkait
+        ↓
+evaluate regulation groups
+        ↓
+inspect candidate Pasal
+        ↓
+baca_isi_pasal
+        ↓
+      analyze
+```
+
+Complex legal issues can combine these paths and run several focused retrievals before analysis.
+
+---
+
+## Semantic retrieval
+
+Aturan.org semantic search is designed around the **substance of legal norms**.
+
+A useful query describes the legal concept being sought.
+
+For example:
+
+```text
+hak ahli waris penerima manfaat program jaminan kematian BPJS Ketenagakerjaan
+```
+
+rather than:
+
+```text
+bagaimana jaminan kematian BPJS Ketenagakerjaan untuk ahli waris?
+```
+
+Or:
+
+```text
+kewajiban pemberi kerja mendaftarkan pekerja dalam program jaminan sosial
+```
+
+rather than:
+
+```text
+apa kewajiban perusahaan soal BPJS?
+```
+
+Semantic retrieval benefits from sufficient context. Queries for semantic retrieval should therefore contain enough substantive information to represent the intended legal meaning.
+
+For complex issues, several focused queries are usually more useful than one oversized query containing every aspect of the problem.
+
+Current query requirements and retrieval parameters are documented in the relevant API and MCP specifications.
+
+---
+
+## Multilingual semantic retrieval
+
+Semantic retrieval is based on meaning rather than literal word matching.
+
+This allows queries to be expressed differently from the wording found in Indonesian regulations, including queries written in other languages supported by the underlying multilingual embedding model.
+
+For example:
+
+```text
+foreign investor land ownership restrictions
+```
+
+can be used as a semantic query against Indonesian regulatory provisions even though the source legislation itself is written in Indonesian.
+
+```text
+English or multilingual query
+             │
+             ▼
+     semantic embedding
+             │
+             ▼
+ Indonesian legal corpus
+             │
+             ▼
+      candidate Pasal
+```
+
+This is useful for international users, cross-border research, and AI agents that may reason in a language different from the language of the underlying legal source.
+
+Semantic similarity, however, is not legal interpretation. Retrieved candidates must still be evaluated in their complete regulatory context.
+
+---
+
+## Agentic legal research
+
+Aturan.org is designed for **multi-step retrieval**, not only one-shot search.
+
+An AI agent can use its own reasoning to formulate queries, inspect retrieval results, identify missing dimensions, retrieve again, and read selected provisions before producing an answer.
+
+For example, a question about rooftop solar regulation may lead an agent to investigate several dimensions:
+
+```text
+pengaturan PLTS atap
+
+perizinan PLTS atap
+
+kewajiban pemegang izin usaha penyediaan tenaga listrik terkait PLTS atap
+
+ekspor impor energi listrik PLTS atap
+
+kapasitas pemasangan PLTS atap
+```
+
+The agent can then compare the regulations and Pasal candidates returned from those retrievals and read the provisions that materially support the analysis.
+
+The workflow becomes:
+
+```text
+question
+   │
+   ▼
+understand the issue
+   │
+   ▼
+formulate focused queries
+   │
+   ▼
+retrieve
+   │
+   ▼
+inspect results
+   │
+   ├──────── insufficient coverage ────────┐
+   │                                       │
+   ▼                                       │
+refine query                               │
+   │                                       │
+   └──────────── retrieve again ◄──────────┘
+   │
+   ▼
+read selected provisions
+   │
+   ▼
+compare legal material
+   │
+   ▼
+analyze
+```
+
+This allows the model's reasoning capability and Aturan.org's retrieval capability to perform separate jobs:
+
+> **The model reasons about what to investigate; Aturan.org retrieves the regulatory evidence.**
+
+---
 
 ## Principles for AI agents
 
-- **Retrieve before reasoning.** Use retrieval when an analysis depends on a regulation or Pasal.
-- **Read before citing.** A semantic hit is a candidate, not a substitute for the full wording of a provision.
-- **Do not fabricate references.** Only present regulation identities, Pasal numbers, and text returned by Aturan.org as retrieval results.
-- **Use `regulation_id` only from tool results.** Do not invent or guess it.
-- **Iterate when necessary.** Inspect results, refine the query, retrieve again, then read the selected provisions.
+### Retrieve before reasoning
 
-## Limitations
+When an analysis depends on Indonesian regulations, retrieve the relevant legal material before relying on the model's internal knowledge.
 
-Semantic search ranks candidates by relevance. It does not by itself establish that a provision applies to every fact pattern, is the controlling legal basis, remains in force without amendment, or supports a particular interpretation.
+Internal model knowledge can help formulate queries, decompose an issue, recognize legal concepts, and reason about the retrieved material.
 
-Before drawing a legal conclusion, evaluate the complete text and context of the Pasal, the regulation’s status and amendments, the relationship and hierarchy of relevant regulations, and the facts at issue.
+It should not replace retrieval when a regulation, Pasal, or legal wording is being presented as the basis of the analysis.
 
-## Public architecture
+### Read before citing
 
-The diagram below describes the public Aturan.org retrieval architecture. It intentionally focuses on the product interfaces and retrieval flow—not private infrastructure or implementation details.
+Semantic search identifies candidates.
+
+Before quoting a provision or relying on its wording, retrieve the complete Pasal.
 
 ```text
-                         ┌───────────────────────────────────┐
-                         │  Indonesian regulation corpus     │
-                         │  288,826 regulations              │
-                         │  5,339,903 structured Pasal       │
-                         └─────────────────┬─────────────────┘
-                                           │
-                                           ▼
-                    ┌──────────────────────────────────────────────┐
-                    │            Aturan.org Retrieval Core         │
-                    │                                              │
-                    │  · title / identity retrieval                │
-                    │  · Exact Nearest Neighbor semantic search    │
-                    │  · Pasal-level candidate retrieval           │
-                    │  · regulation grouping and full Pasal read   │
-                    └───────────────┬─────────────┬────────────────┘
-                                    │             │
-                ┌───────────────────┘             └──────────────────┐
-                ▼                                                    ▼
-┌─────────────────────────────────┐                 ┌────────────────────────────────────┐
-│  MCP Server · Streamable HTTP   │                 │  Aturan.org web app and REST API   │
-│                                 │                 │                                    │
-│  · cari_judul_peraturan         │                 │  · issue and regulation discovery  │
-│  · cari_pasal_terkait           │                 │  · legal research workflows        │
-│  · cari_peraturan_terkait       │                 │  · application integration         │
-│  · baca_isi_pasal               │                 │                                    │
-└───────────────┬─────────────────┘                 └────────────────┬───────────────────┘
-                │                                                    │
-                ▼                                                    ▼
-┌─────────────────────────────────┐                 ┌────────────────────────────────────┐
-│  AI clients and agentic LLMs    │                 │  Researchers and applications      │
-│                                 │                 │                                    │
-│  retrieve → read → analyse      │                 │  search · inspect · integrate      │
-│  with grounded source material  │                 │                                    │
-└─────────────────────────────────┘                 └────────────────────────────────────┘
+semantic hit ≠ full legal provision
 ```
 
-## Retrieval design
+### Do not fabricate references
 
-Aturan.org is designed as a legal-research system in which each retrieval mode has a different job. Rather than asking one search endpoint to answer every question, the system separates document identity, norm discovery, regulatory landscape discovery, and source verification.
+Regulation identities, Pasal numbers, `regulation_id` values, and legal text presented as Aturan.org retrieval results must come from actual retrieval results.
+
+In particular:
+
+```text
+Never guess regulation_id.
+```
+
+### Iterate when necessary
+
+Legal retrieval is not necessarily a one-query process.
+
+```text
+query
+  ↓
+inspect
+  ↓
+refine
+  ↓
+retrieve again
+  ↓
+read
+  ↓
+analyze
+```
+
+The number of retrievals should depend on the complexity of the issue and whether each additional call contributes useful evidence.
+
+---
+
+## Retrieval architecture
+
+Aturan.org separates several retrieval problems that are often incorrectly treated as a single search problem.
 
 | Retrieval layer | Method | Purpose |
 | --- | --- | --- |
-| Regulation identity | Literal/full-text title search | Resolves a known title, type, number, year, or title phrase. |
-| Norm discovery | Exact Nearest Neighbor semantic retrieval at Pasal level | Finds candidate provisions relevant to a legal concept. |
-| Landscape discovery | Aggregated Pasal-level semantic retrieval | Maps regulations connected to an issue, with candidate Pasal hits. |
-| Source verification | Full Pasal retrieval | Reads the complete wording of one provision before citation or analysis. |
+| **Regulation identity** | Literal/full-text title retrieval | Resolve a known regulation from its title, type, number, year, or title phrase. |
+| **Norm discovery** | Pasal-level semantic retrieval | Find candidate provisions relevant to a legal concept. |
+| **Landscape discovery** | Aggregated Pasal-level semantic retrieval | Map regulations connected to an issue through their relevant provisions. |
+| **Source verification** | Full-Pasal retrieval | Read the complete provision before citation or analysis. |
 
-### Built for grounded, multi-step research
+The public architecture can be represented as:
 
-- **Exact Nearest Neighbor, not ANN/HNSW.** Semantic retrieval uses an exact nearest-neighbor approach rather than approximating the nearest retrieved candidates through an ANN index.
-- **GPU-sharded exact search.** The candidate space is searched across GPU shards and the resulting candidates are merged globally. This makes exact retrieval practical at corpus scale while avoiding the recall trade-off of approximate ANN/HNSW indexes, where relevant near-neighbours can be missed.
-- **Pasal-first retrieval.** A legal issue is matched to candidate norms at the provision level, then connected back to the regulations that contain them.
-- **Separate discovery from verification.** A semantic hit helps select what to inspect; `baca_isi_pasal` retrieves the complete provision that supports any later explanation.
-- **Agentic by design.** An LLM can run several focused retrievals, compare their outputs, read selected provisions, and refine its next query before drafting analysis.
-- **Stable retrieval references.** The gateway returns `regulation_id` values for use in subsequent provision reads. Agents must obtain them from results rather than constructing them.
-- **Bounded, focused queries.** MCP tools accept a substantive query and constrained `top_k` results, making it practical to iterate from broad landscape mapping to a particular Pasal.
+```text
+                   ┌──────────────────────────────────┐
+                   │ Indonesian regulation corpus     │
+                   │                                  │
+                   │ structured regulations & Pasal   │
+                   └────────────────┬─────────────────┘
+                                    │
+                                    ▼
+              ┌────────────────────────────────────────────┐
+              │         Aturan.org Retrieval Core          │
+              │                                            │
+              │  · regulation identity retrieval           │
+              │  · Pasal-level semantic retrieval          │
+              │  · regulation-level aggregation            │
+              │  · full-Pasal retrieval                    │
+              └──────────────┬──────────────┬──────────────┘
+                             │              │
+                 ┌───────────┘              └───────────┐
+                 ▼                                      ▼
+      ┌───────────────────────┐              ┌───────────────────────┐
+      │      MCP Server       │              │   Web & REST API      │
+      │                       │              │                       │
+      │  AI tool interface    │              │ humans & applications │
+      └───────────┬───────────┘              └───────────┬───────────┘
+                  │                                      │
+                  ▼                                      ▼
+      ┌───────────────────────┐              ┌───────────────────────┐
+      │ AI clients & agents   │              │ researchers, systems  │
+      │                       │              │ and applications      │
+      │ retrieve              │              │                       │
+      │ read                  │              │ search                │
+      │ reason                │              │ inspect               │
+      │ analyze               │              │ integrate             │
+      └───────────────────────┘              └───────────────────────┘
+```
 
-### Deployment and operating principles
+---
 
-- **Institution-ready by design.** Aturan.org is engineered with on-premise deployment in mind, so institutions and enterprises can adopt the retrieval architecture within their own infrastructure, governance, and data-boundary requirements.
-- **Practical tool calling.** Tool-calling workflows are deliberately tested with models in the 4B class. This establishes a demanding efficiency baseline: if a smaller model can execute a useful retrieval workflow, larger models have additional headroom for planning and analysis.
-- **Coverage at the time of writing.** The corpus contains **288,826 regulations** and **5,339,903 structured Pasal**. Coverage and counts will evolve as the corpus is expanded and maintained.
+## Retrieval engine
+
+Aturan.org is designed around high-recall legal discovery at the provision level.
+
+### Pasal-first retrieval
+
+The fundamental semantic retrieval unit is the **Pasal**.
+
+This preserves the legal provision as a meaningful normative unit while allowing a legal concept to be matched directly against candidate norms.
+
+Retrieved Pasal can then be connected back to the regulations that contain them.
+
+### Exact Nearest Neighbor
+
+Semantic retrieval uses **Exact Nearest Neighbor (ENN)** rather than an approximate nearest-neighbor index such as ANN/HNSW.
+
+```text
+query embedding
+      │
+      ▼
+exact candidate search
+      │
+      ▼
+global nearest candidates
+      │
+      ▼
+candidate Pasal
+```
+
+The objective is to search the available candidate space directly rather than accepting an approximation at the retrieval layer.
+
+For legal discovery, this design prioritizes retrieval recall: a potentially relevant neighbouring provision should not be excluded merely because an approximate index did not traverse that candidate.
+
+### GPU-sharded exact search
+
+The semantic candidate space can be searched across GPU shards and the results merged globally.
+
+```text
+                 query
+                   │
+                   ▼
+            query embedding
+                   │
+       ┌───────────┼───────────┐
+       ▼           ▼           ▼
+    shard 1     shard 2     shard N
+       │           │           │
+       └───────────┼───────────┘
+                   ▼
+             global merge
+                   │
+                   ▼
+          nearest Pasal
+```
+
+This architecture makes exact semantic retrieval practical at corpus scale while keeping the retrieval model conceptually simple.
+
+### Discovery and verification are separate
+
+Semantic retrieval answers:
+
+> **What legal material should I inspect?**
+
+Full-Pasal retrieval answers:
+
+> **What does the selected provision actually say?**
+
+Keeping those operations separate prevents a similarity result or snippet from being treated as though it were the complete legal rule.
+
+---
+
+## Designed for efficient agentic use
+
+Aturan.org does not assume that legal retrieval requires the largest possible language model.
+
+The MCP workflow is deliberately structured so that retrieval tools have clear roles, bounded inputs, and machine-readable outputs.
+
+This makes the system suitable for tool-calling agents ranging from lightweight local models to larger frontier models.
+
+A capable agent needs to understand a relatively small set of operations:
+
+```text
+discover regulations
+find norms
+resolve regulation identity
+read provisions
+```
+
+The legal corpus and retrieval workload remain outside the LLM itself.
+
+This separation allows the language model to concentrate on planning and reasoning while Aturan.org performs legal evidence retrieval.
+
+---
+
+## Institution and enterprise use
+
+The retrieval architecture is designed so that the same general pattern can be used beyond the public Aturan.org service.
+
+```text
+structured legal corpus
+        +
+semantic retrieval
+        +
+legal source reading
+        +
+tool interface
+        +
+agentic LLM
+```
+
+This architecture is suitable for LegalTech, RegTech, institutional legal knowledge systems, private RAG environments, and on-premise AI deployments where organizations require greater control over infrastructure, governance, or data boundaries.
+
+The public Aturan.org service demonstrates this retrieval model using Indonesian regulations.
+
+---
 
 ## Interfaces
 
-| Surface | Address | Role |
+| Interface | Address | Primary role |
 | --- | --- | --- |
-| Web app | [aturan.org](https://aturan.org) | Human-facing legal discovery and research. |
-| MCP Server | [aturan.org/mcp](https://aturan.org/mcp) | Remote MCP connection for AI clients and agents. |
-| REST API | [aturan.org/api](https://aturan.org/api) | Application integration. |
-| Discover | [aturan.org/discover](https://aturan.org/discover) | Entry point for exploring Aturan.org. |
+| **Web** | https://aturan.org | Human-facing semantic legal research. |
+| **MCP Server** | https://aturan.org/mcp | AI clients and agentic legal retrieval. |
+| **REST API** | https://aturan.org/api | Application and system integration. |
+| **Discover** | https://aturan.org/discover | Overview of available integration methods and use cases. |
+
+The interfaces serve different users but share the same core principle:
+
+```text
+find relevant legal material
+        ↓
+inspect the source
+        ↓
+read the norm
+        ↓
+then analyze
+```
+
+---
+
+## Source verification
+
+Aturan.org is designed to support **grounded legal research**, not to replace authoritative legal sources.
+
+Where source verification is required, users and AI systems should inspect the official source document associated with the retrieved regulation.
+
+A retrieval result helps locate relevant legal material.
+
+It does not transform Aturan.org into the official publisher of that material.
+
+---
+
+## Limitations
+
+Semantic similarity is evidence of **retrieval relevance**, not evidence of legal applicability.
+
+A highly similar provision does not by itself establish that the provision:
+
+- applies to every factual situation;
+- is the primary or controlling legal basis;
+- remains effective without amendment;
+- overrides another regulation;
+- has no relevant implementing regulation;
+- supports a particular interpretation; or
+- leads to a particular legal conclusion.
+
+Before drawing a legal conclusion, evaluate:
+
+- the complete wording of the Pasal;
+- the context of the provision within the regulation;
+- definitions and related provisions;
+- the regulation's status;
+- amendments and revocations;
+- implementing regulations;
+- relationships between regulations;
+- regulatory hierarchy; and
+- the facts being analysed.
+
+Aturan.org helps retrieve the evidence needed for that work.
+
+The interpretation remains a separate analytical step.
+
+---
+
+## Documentation
+
+Detailed and current specifications are maintained outside this README.
+
+### MCP Server
+
+Connection methods, OAuth, API Key authentication, MCP tools, parameters, retrieval strategy, and AI usage guidance:
+
+**https://aturan.org/mcp**
+
+### REST API
+
+Authentication, endpoints, request parameters, response structures, and integration guidance:
+
+**https://aturan.org/api**
+
+### Discover
+
+Comparison of the available interfaces and guidance on choosing between Web, REST API, and MCP:
+
+**https://aturan.org/discover**
+
+These documentation pages are the source of truth for operational specifications that may change over time.
+
+---
 
 ## Service access
 
-Aturan.org offers free and paid access tiers. Access to the hosted web app, MCP server, and REST API is governed by the applicable service terms, credentials, quotas, and plan limits.
+Aturan.org provides free and paid access to its hosted services.
 
-The logo and the Aturan.org name are proprietary brand assets. A future repository license will apply only to the source code and documentation that are actually published in this repository; it will not govern the private backend or replace the service terms.
+Access conditions, authentication methods, credits, quotas, usage limits, and available plans may differ between the Web application, REST API, and MCP Server.
+
+Users can manage their account and create or revoke API keys through the Aturan.org Dashboard.
+
+Refer to the relevant Aturan.org documentation for current service specifications.
+
+---
+
+## About this repository
+
+This repository represents the public-facing Aturan.org project and its published resources.
+
+The hosted Aturan.org service includes infrastructure, datasets, retrieval systems, and backend components that are not necessarily part of this repository.
+
+The **Aturan.org** name and logo are proprietary brand assets.
+
+Any repository license applies only to source code and documentation explicitly published under that license. It does not grant rights to private backend systems, hosted services, datasets, trademarks, or brand assets unless expressly stated otherwise.
+
+---
+
+<p align="center">
+  <strong>Find the norm by meaning. Verify the source.</strong>
+</p>
+
+<p align="center">
+  <a href="https://aturan.org">aturan.org</a>
+</p>
