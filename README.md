@@ -148,6 +148,21 @@ Aturan.org provides a remote MCP server using **Streamable HTTP**.
 https://mcp.aturan.org/mcp
 ```
 
+### Quick install
+
+Connect Aturan.org to supported AI development environments using a single command:
+
+```bash
+npx add-mcp 'https://mcp.aturan.org/mcp'
+```
+
+The `add-mcp` CLI simplifies MCP server configuration for compatible AI clients and development tools.
+After installation, complete authentication using OAuth or an API Key, depending on the client's capabilities.
+Alternatively, configure the MCP endpoint manually in any compatible client supporting remote MCP over Streamable HTTP.
+For client-specific instructions, see the [MCP documentation](https://aturan.org/mcp).
+
+### Authentication
+
 Aturan.org supports two authentication paths:
 
 ```text
