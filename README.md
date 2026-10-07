@@ -210,14 +210,15 @@ For REST API integration, see:
 
 ## MCP tools
 
-The MCP server exposes complementary legal retrieval tools.
+The MCP server exposes five complementary legal retrieval tools.
 
 | Tool | Purpose |
 | --- | --- |
 | `cari_peraturan_terkait` | Discover regulations related to a legal issue through aggregated Pasal-level semantic retrieval. |
 | `cari_pasal_terkait` | Find candidate Pasal directly by semantic similarity to a legal concept or normative issue. |
 | `cari_judul_peraturan` | Resolve a known regulation from its title, type, number, year, or title fragment. |
-| `baca_isi_pasal` | Retrieve the complete wording of a selected Pasal from a regulation already identified by Aturan.org. |
+| `baca_isi_pasal` | Retrieve the complete wording of one selected Pasal from a regulation already identified by Aturan.org. |
+| `baca_isi_pasal_batch` | Retrieve multiple already-identified Pasal in one call, including across different regulations. |
 
 Each tool answers a different retrieval question.
 
@@ -234,14 +235,18 @@ Which exact regulation is this?
         │
         └── cari_judul_peraturan
 
-What does the provision actually say?
+What does one provision actually say?
         │
         └── baca_isi_pasal
+
+What do several identified provisions say?
+        │
+        └── baca_isi_pasal_batch
 ```
 
-The tools are complementary rather than interchangeable.
+The tools are complementary rather than interchangeable. An agent does not need to call every tool for every question. It should select the tools that add information needed for the research task.
 
-An agent does not need to call every tool for every question. It should select the tools that add information needed for the research task.
+When several relevant Pasal have already been identified, baca_isi_pasal_batch can retrieve up to 20 provisions in a single call, including provisions from different regulations.
 
 ---
 
@@ -284,9 +289,19 @@ Relevant signals may include:
 
 Retrieve the complete wording of provisions that will support the analysis.
 
+For a single provision:
+
 ```text
 baca_isi_pasal
 ```
+
+When several relevant Pasal have already been identified:
+
+```text
+baca_isi_pasal_batch
+```
+
+The batch tool can read up to 20 identified Pasal in one call, including Pasal from different regulations.
 
 A semantic hit is a **candidate**, not a substitute for reading the legal provision itself.
 
@@ -317,13 +332,15 @@ The appropriate workflow depends on what is already known.
 If the regulation is already identified:
 
 ```text
+Known regulation
+      ↓
 cari_judul_peraturan
-        ↓
-   regulation_id
-        ↓
+      ↓
+ regulation_id
+      ↓
 baca_isi_pasal
-        ↓
-      analyze
+      ↓
+    analyze
 ```
 
 ### Known legal issue
@@ -331,13 +348,16 @@ baca_isi_pasal
 If the issue or norm is known but the regulation is not:
 
 ```text
+Known legal issue
+      ↓
 cari_pasal_terkait
-        ↓
+      ↓
 evaluate candidates
-        ↓
+      ↓
 baca_isi_pasal
-        ↓
-      analyze
+or baca_isi_pasal_batch
+      ↓
+    analyze
 ```
 
 ### Regulatory landscape
@@ -345,15 +365,18 @@ baca_isi_pasal
 If the objective is to identify the broader regulatory framework:
 
 ```text
+Regulatory landscape
+      ↓
 cari_peraturan_terkait
-        ↓
+      ↓
 evaluate regulation groups
-        ↓
+      ↓
 inspect candidate Pasal
-        ↓
-baca_isi_pasal
-        ↓
-      analyze
+      ↓
+baca_isi_pasal_batch
+when multiple Pasal are identified
+      ↓
+    analyze
 ```
 
 Complex legal issues can combine these paths and run several focused retrievals before analysis.
