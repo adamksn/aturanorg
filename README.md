@@ -64,7 +64,7 @@ covering national, regional, and institutional regulatory frameworks.
 | Legal provisions (Pasal) | 5,406,416+ |
 | Retrieval granularity | Pasal-level |
 | Data updates | Daily |
-| Database size | 22 GB+ |
+| Vector database size | 22 GB+ |
 
 ### Regulatory Coverage
 
