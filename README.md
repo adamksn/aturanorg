@@ -50,6 +50,87 @@ The platform is available through:
 
 ---
 
+## Legal Knowledge Coverage
+
+Aturan.org provides semantic retrieval across a continuously
+updated corpus of Indonesian regulations and legal provisions,
+covering national, regional, and institutional regulatory frameworks.
+
+### Corpus Overview
+
+| Metric | Coverage |
+| --- | --- |
+| Indonesian regulations | 292,838+ |
+| Legal provisions (Pasal) | 5,406,416+ |
+| Retrieval granularity | Pasal-level |
+| Data updates | Daily |
+| Database size | 22 GB+ |
+
+### Regulatory Coverage
+
+The corpus spans national legislation, presidential and ministerial
+instruments, regional regulations, and regulations issued by
+state institutions and public authorities.
+
+The following table highlights major regulatory categories
+with published coverage statistics.
+
+| Regulation Type | Regulations | Pasal |
+| --- | ---: | ---: |
+| Laws (UU) | 1,919 | 47,871 |
+| Government Regulations in Lieu of Law (PERPU) | 163 | 2,895 |
+| Government Regulations (PP) | 4,974 | 87,270 |
+| Presidential Regulations (PERPRES) | 2,622 | 41,289 |
+| Presidential Decrees (KEPPRES) | 6,804 | 19,637 |
+| Presidential Instructions (INPRES) | 455 | 116 |
+| Ministerial Regulations (PERMEN) | 16,742 | 440,915 |
+| Ministerial Decrees (KEPMEN) | 392 | 919 |
+| Regional Regulations (PERDA) | 60,696 | 1,687,022 |
+| Governor Regulations (PERGUB) | 18,011 | 299,731 |
+| Mayor Regulations (PERWALI) | 35,655 | 527,780 |
+| Regent Regulations (PERBUP) | 137,773 | 2,093,849 |
+
+### Additional Regulatory Instruments
+
+Beyond the major categories listed above, Aturan.org also
+covers a broader range of legal and administrative instruments,
+including:
+
+- **Special regional legislation:** Qanun, Papua Special
+  Regional Regulations (Perdasus), and Special Region Regulations.
+- **Judicial institutions:** Regulations issued by the Supreme
+  Court and other judicial authorities.
+- **Law enforcement institutions:** Regulations and decisions
+  issued by the Attorney General's Office and National Police.
+- **State institutions and commissions:** Regulations issued
+  by constitutional bodies, commissions, councils, and
+  independent state institutions.
+- **Government agencies and public authorities:** Regulations
+  and decisions issued by agencies, boards, supervisory
+  authorities, and other public institutions.
+- **Other administrative instruments:** Circular letters,
+  instructions, decrees, and institutional regulations.
+
+The coverage statistics above represent selected major
+categories and do not constitute an exhaustive breakdown
+of the entire regulatory corpus.
+
+### Pasal-Level Semantic Retrieval
+
+Unlike conventional document-level search, Aturan.org
+enables semantic retrieval directly at the level of
+individual legal provisions (Pasal).
+
+This allows AI agents and legal researchers to discover
+relevant norms across national, regional, and institutional
+regulations without knowing the regulation title or
+exact legal wording.
+
+The regulatory corpus is continuously maintained and
+expanded through daily synchronization.
+
+---
+
 ## Why semantic legal retrieval?
 
 Legal research does not always begin with the name of a regulation.
