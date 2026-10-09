@@ -25,7 +25,7 @@
   <a href="https://aturan.org/mcp"><img src="https://img.shields.io/badge/MCP-Streamable_HTTP-2463EB?style=flat" alt="MCP Streamable HTTP" /></a>
   <img src="https://img.shields.io/badge/Retrieval-Pasal_Level-184B3B?style=flat" alt="Pasal-level retrieval" />
   <img src="https://img.shields.io/badge/Search-Exact_Nearest_Neighbor-184B3B?style=flat" alt="Exact Nearest Neighbor" />
-  <a href="https://mcpservers.org/servers/adamksn/aturanorg"><img src="https://mcpservers.org/badge.svg" alt="Listed on mcpservers.org" />
+  <a href="https://mcpservers.org/servers/adamksn/aturanorg"><img src="https://mcpservers.org/badge.svg" alt="Listed on mcpservers.org" /></a>
 </p>
 
 ---
