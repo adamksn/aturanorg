@@ -23,7 +23,6 @@
 <p align="center">
   <a href="https://aturan.org"><img src="https://img.shields.io/badge/Legal_Knowledge-Aturan.org-184B3B?style=flat" alt="Legal Knowledge by Aturan.org" /></a>
   <a href="https://aturan.org/mcp"><img src="https://img.shields.io/badge/MCP-Streamable_HTTP-2463EB?style=flat" alt="MCP Streamable HTTP" /></a>
-  <img src="https://img.shields.io/badge/Retrieval-Pasal_Level-184B3B?style=flat" alt="Pasal-level retrieval" />
   <img src="https://img.shields.io/badge/Search-Exact_Nearest_Neighbor-184B3B?style=flat" alt="Exact Nearest Neighbor" />
   <a href="https://mcpservers.org/servers/adamksn/aturanorg"><img src="https://mcpservers.org/badge.svg" alt="Listed on mcpservers.org" /></a>
 </p>
@@ -36,7 +35,7 @@
 
 It helps people, applications, and AI agents discover regulations and legal provisions based on **meaning and legal context**, rather than relying only on exact keywords or already knowing the title of a regulation.
 
-Aturan.org performs semantic retrieval at the **Pasal level**. A legal issue can therefore be matched directly against candidate provisions, which can then be traced back to the regulations that contain them and read in full before being used in legal analysis.
+Aturan.org helps match legal issues with candidate provisions. Users can identify the relevant regulations and read the complete provisions before using them in legal analysis.
 
 The platform is available through:
 
@@ -62,7 +61,6 @@ covering national, regional, and institutional regulatory frameworks.
 | --- | --- |
 | Indonesian regulations | 292,838+ |
 | Legal provisions (Pasal) | 5,406,416+ |
-| Retrieval granularity | Pasal-level |
 | Data updates | Daily |
 | Vector database size | 71.6 GB+ |
 
@@ -115,19 +113,11 @@ The coverage statistics above represent selected major
 categories and do not constitute an exhaustive breakdown
 of the entire regulatory corpus.
 
-### Pasal-Level Semantic Retrieval
+### Semantic Legal Discovery
 
-Unlike conventional document-level search, Aturan.org
-enables semantic retrieval directly at the level of
-individual legal provisions (Pasal).
+Aturan.org helps AI agents and legal researchers discover relevant legal provisions across national, regional, and institutional regulations without knowing the regulation title or exact legal wording.
 
-This allows AI agents and legal researchers to discover
-relevant norms across national, regional, and institutional
-regulations without knowing the regulation title or
-exact legal wording.
-
-The regulatory corpus is continuously maintained and
-expanded through daily synchronization.
+The regulatory corpus is continuously maintained and expanded through daily synchronization.
 
 ---
 
@@ -178,7 +168,7 @@ This makes it possible to begin legal research from the **substance of the issue
 | Capability | Purpose |
 | --- | --- |
 | **Regulation discovery** | Discover regulations connected to a legal issue across regulation types and hierarchies. |
-| **Pasal-level semantic search** | Find candidate provisions related to a right, obligation, prohibition, authority, procedure, sanction, condition, or other legal concept. |
+| **Semantic provision discovery** | Find candidate provisions related to a right, obligation, prohibition, authority, procedure, sanction, condition, or other legal concept. |
 | **Regulation identity search** | Locate a regulation when its type, number, year, title, or title fragment is already known. |
 | **Full-Pasal retrieval** | Read the complete wording of a selected provision before quoting or analysing it. |
 | **Legal landscape research** | Explore an issue across multiple regulations and normative dimensions. |
@@ -310,7 +300,7 @@ The MCP server exposes five complementary legal retrieval tools.
 
 | Tool | Purpose |
 | --- | --- |
-| `cari_peraturan_terkait` | Discover regulations related to a legal issue through aggregated Pasal-level semantic retrieval. |
+| `cari_peraturan_terkait` | Discover regulations related to a legal issue through semantic search. |
 | `cari_pasal_terkait` | Find candidate Pasal directly by semantic similarity to a legal concept or normative issue. |
 | `cari_judul_peraturan` | Resolve a known regulation from its title, type, number, year, or title fragment. |
 | `baca_isi_pasal` | Retrieve the complete wording of one selected Pasal from a regulation already identified by Aturan.org. |
@@ -664,113 +654,54 @@ The number of retrievals should depend on the complexity of the issue and whethe
 
 ---
 
-## Retrieval architecture
+## Retrieval capabilities
 
-Aturan.org separates several retrieval problems that are often incorrectly treated as a single search problem.
+Aturan.org supports complementary capabilities for discovering regulations, identifying relevant provisions, and reading source material.
 
-| Retrieval layer | Method | Purpose |
-| --- | --- | --- |
-| **Regulation identity** | Literal/full-text title retrieval | Resolve a known regulation from its title, type, number, year, or title phrase. |
-| **Norm discovery** | Pasal-level semantic retrieval | Find candidate provisions relevant to a legal concept. |
-| **Landscape discovery** | Aggregated Pasal-level semantic retrieval | Map regulations connected to an issue through their relevant provisions. |
-| **Source verification** | Full-Pasal retrieval | Read the complete provision before citation or analysis. |
+| Capability | Purpose |
+| --- | --- |
+| **Regulation identity** | Resolve a known regulation from its title, type, number, year, or title phrase. |
+| **Norm discovery** | Find candidate provisions relevant to a legal concept. |
+| **Landscape discovery** | Discover regulations connected to a legal issue. |
+| **Source verification** | Read complete provisions before citation or analysis. |
 
-The public architecture can be represented as:
+These capabilities are available through the Web application, REST API, and MCP Server.
 
 ```text
-                   ┌──────────────────────────────────┐
-                   │ Indonesian regulation corpus     │
-                   │                                  │
-                   │ structured regulations & Pasal   │
-                   └────────────────┬─────────────────┘
-                                    │
-                                    ▼
-              ┌────────────────────────────────────────────┐
-              │         Aturan.org Retrieval Core          │
-              │                                            │
-              │  · regulation identity retrieval           │
-              │  · Pasal-level semantic retrieval          │
-              │  · regulation-level aggregation            │
-              │  · full-Pasal retrieval                    │
-              └──────────────┬──────────────┬──────────────┘
-                             │              │
-                 ┌───────────┘              └───────────┐
-                 ▼                                      ▼
-      ┌───────────────────────┐              ┌───────────────────────┐
-      │      MCP Server       │              │   Web & REST API      │
-      │                       │              │                       │
-      │  AI tool interface    │              │ humans & applications │
-      └───────────┬───────────┘              └───────────┬───────────┘
-                  │                                      │
-                  ▼                                      ▼
-      ┌───────────────────────┐              ┌───────────────────────┐
-      │ AI clients & agents   │              │ researchers, systems  │
-      │                       │              │ and applications      │
-      │ retrieve              │              │                       │
-      │ read                  │              │ search                │
-      │ reason                │              │ inspect               │
-      │ analyze               │              │ integrate             │
-      └───────────────────────┘              └───────────────────────┘
+       Indonesian regulatory corpus
+                     │
+                     ▼
+                 Aturan.org
+                     │
+          ┌──────────┼──────────┐
+          ▼          ▼          ▼
+         Web      REST API     MCP Server
+          │          │          │
+          ▼          ▼          ▼
+     Researchers  Applications  AI clients
+                                & agents
 ```
 
 ---
 
-## Retrieval engine
+### GPU-accelerated exact search
 
-Aturan.org is designed around high-recall legal discovery at the provision level.
-
-### Pasal-first retrieval
-
-The fundamental semantic retrieval unit is the **Pasal**.
-
-This preserves the legal provision as a meaningful normative unit while allowing a legal concept to be matched directly against candidate norms.
-
-Retrieved Pasal can then be connected back to the regulations that contain them.
-
-### Exact Nearest Neighbor
-
-Semantic retrieval uses **Exact Nearest Neighbor (ENN)** rather than an approximate nearest-neighbor index such as ANN/HNSW.
+Aturan.org uses GPU-accelerated **Exact Nearest Neighbor (ENN)** search rather than approximate nearest-neighbor indexing. This reflects our commitment to thorough semantic candidate discovery for legal research.
 
 ```text
-query embedding
-      │
-      ▼
-exact candidate search
-      │
-      ▼
-global nearest candidates
-      │
-      ▼
-candidate Pasal
+           query
+             │
+             ▼
+      query embedding
+             │
+             ▼
+ GPU-accelerated exact search
+             │
+             ▼
+     nearest candidates
 ```
 
-The objective is to search the available candidate space directly rather than accepting an approximation at the retrieval layer.
-
-For legal discovery, this design prioritizes retrieval recall: a potentially relevant neighbouring provision should not be excluded merely because an approximate index did not traverse that candidate.
-
-### GPU-sharded exact search
-
-The semantic candidate space can be searched across GPU shards and the results merged globally.
-
-```text
-                 query
-                   │
-                   ▼
-            query embedding
-                   │
-       ┌───────────┼───────────┐
-       ▼           ▼           ▼
-    shard 1     shard 2     shard N
-       │           │           │
-       └───────────┼───────────┘
-                   ▼
-             global merge
-                   │
-                   ▼
-          nearest Pasal
-```
-
-This architecture makes exact semantic retrieval practical at corpus scale while keeping the retrieval model conceptually simple.
+GPU acceleration makes exhaustive similarity computation practical at corpus scale, supporting responsive legal retrieval while preserving exact nearest-neighbor search.
 
 ### Discovery and verification are separate
 
