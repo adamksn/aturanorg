@@ -59,10 +59,10 @@ covering national, regional, and institutional regulatory frameworks.
 
 | Metric | Coverage |
 | --- | --- |
-| Indonesian regulations | 294,180+ |
-| Legal provisions (Pasal) | 5,578,463+ |
+| Indonesian regulations | 295,823+ |
+| Legal provisions (Pasal) | 5,675,718+ |
 | Data updates | Daily |
-| Vector database size | 73.7 GB+ |
+| Vector database size | 73.9 GB+ |
 
 ### Regulatory Coverage
 
@@ -75,18 +75,18 @@ with published coverage statistics.
 
 | Regulation Type | Regulations | Pasal |
 | --- | ---: | ---: |
-| Laws (UU) | 1,924 | 49,972 |
+| Laws (UU) | 1,924 | 50,406 |
 | Government Regulations in Lieu of Law (PERPU) | 163 | 2,898 |
-| Government Regulations (PP) | 4,988 | 90,689 |
-| Presidential Regulations (PERPRES) | 2,651 | 43,511 |
-| Presidential Decrees (KEPPRES) | 6,810 | 19,954 |
-| Presidential Instructions (INPRES) | 455 | 116 |
-| Ministerial Regulations (PERMEN) | 16,743 | 453,155 |
+| Government Regulations (PP) | 4,988 | 90,719 |
+| Presidential Regulations (PERPRES) | 2,653 | 43,533 |
+| Presidential Decrees (KEPPRES) | 6,815 | 19,972 |
+| Presidential Instructions (INPRES) | 461 | 116 |
+| Ministerial Regulations (PERMEN) | 17,306 | 470,741 |
 | Ministerial Decrees (KEPMEN) | 392 | 1,012 |
-| Regional Regulations (PERDA) | 60,696 | 1,726,621 |
-| Governor Regulations (PERGUB) | 18,011 | 310,668 |
-| Mayor Regulations (PERWALI) | 35,879 | 547,695 |
-| Regent Regulations (PERBUP) | 138,836 | 2,169,126 |
+| Regional Regulations (PERDA) | 61,624 | 1,764,327 |
+| Governor Regulations (PERGUB) | 18,011 | 314,563 |
+| Mayor Regulations (PERWALI) | 35,880 | 554,672 |
+| Regent Regulations (PERBUP) | 138,837 | 2,193,151 |
 
 ### Additional Regulatory Instruments
 
